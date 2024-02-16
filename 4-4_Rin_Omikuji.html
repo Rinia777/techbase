@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>おみくじ</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .flex{
+            display: flex;
+            justify-content: center;
+        }
+        .item{
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+        .colorbox{
+            width: 400px; 
+            height: 50px;
+            margin: 0 auto;
+        }
+        .button{
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>おみくじ</h1>
+    <div>
+        <div class="flex">
+            <p class="item">結果：</p>
+            <div id = "omikuji" class="item">ここに表示</div>
+        </div>
+        <div class="flex">
+            <p class="item">一言：</p>
+            <div id = "omikuji2" class="item">ここに表示</div>
+        </div>
+        <div class="flex">
+            <p class="item">ラッキーアイテム：</p>
+            <div id = "rackitem" class="item">ここに表示</div>
+        </div>
+        <div class="flex">
+            <p class="item">ラッキーカラー：</p>
+            <div id = "rackcolor" class="item">ここに表示</div>
+        </div>
+        <div id="colorcord" class="colorbox"></div>
+    </div>
+    <button onclick="omikujishow()" class="button">おみくじを引く</button>
+    <script>
+        function omikujishow(){
+    var ominum = ["大吉","中吉","小吉"];
+    var rad = Math.floor(Math.random() * 3);
+    var text = ominum[rad];
+    var object = document.getElementById("omikuji");
+    object.innerText = text;
+    var rad2 = Math.floor(Math.random() * 5);
+    if (rad == 0){
+        var daikiti = [
+            "願い事を紙に書いて壁にはると良いことがあるでしょう。","人気上昇。笑顔がみんなを引きつける。","感謝の気持ちを忘れずに。「ありがとう」が研を呼びます。","厳を気にせずに新しいことにチャレンジしてみましょう。","いつも前向きな気持ちでいれば、どんどん進があがるでしょう。",
+
+        ];
+        var text2 = daikiti[rad2];
+    }else if(rad == 1){
+        var tyukiti = [
+            "なにごともあせらず、じっくりまてばいいことがあるでしょう。","明日は明日の風が吹く、落ち込む事より楽しいことを考えると書。","優しい心で人にいいことをすれば、自分にもいいことが帰ってきます。","苦手な人とも仲良くしてすると吉が訪れます。","みんなで大笑いするとあなたとあなたの周りの人にも幸運が舞い込んできます。"
+        ];
+        var text2 =tyukiti[rad2];
+    }else{
+        var syoukiti = [
+            "良かった感謝の気持ちを言葉にするように心がけましょう。","深呼吸で幸せを吸い込みましょう。今年一年健康に過ごせます。","まわりの人に優しくすると自分にも帰ってきます。今日から実行してみましょう。","「ありがとう」を忘れずに。人気迎がUPするでしょう。","寝る前に今日事を頭に浮かべてみましょう。"
+        ];
+        var text2 = syoukiti[rad2];
+    }
+    var object = document.getElementById("omikuji2");
+    object.innerText = text2;
+
+    var rad3 = Math.floor(Math.random() * 16);
+    var rackitem = [
+        "ハンカチ","ティッシュ","キーホルダー","手帳","ルームウェア","缶切り","胡椒","爪楊枝","三色ペン",
+        "海苔","名刺","除菌スプレー","消しゴム","帽子","ランチョンマット","毛玉取り"
+    ]
+    var text3 = rackitem[rad3];
+    var object = document.getElementById("rackitem");
+    object.innerText = text3;
+
+    var rad4 = Math.floor(Math.random() * 20);
+    let color = [
+        {name:"薄紅",cord:"#f0908d"},{name:"淡紅藤",cord:"#e6cde3"},{name:"緋色",cord:"#d3381c"},{name:"珊瑚朱色",cord:"#ee836f"},
+        {name:"菜の花色",cord:"#ffec47"},{name:"小豆色",cord:"#96514d"},{name:"黒緑",cord:"#333631"},{name:"若草色",cord:"#c3d825"},
+        {name:"千草鼠",cord:"#bed3ca"},{name:"若緑",cord:"#98d98e"},{name:"京紫",cord:"#9d5b8e"},{name:"藍鼠",cord:"#6c848d"},
+        {name:"白群",cord:"#83ccd2"},{name:"天色",cord:"#2ca9e1"},{name:"瑠璃色",cord:"#1e50a2"},{name:"紅桔梗",cord:"#4d4398"}
+    ]
+    var text4 = color[rad4].name;
+    var cord = color[rad4].cord;
+    var object = document.getElementById("rackcolor");
+    object.innerText = text4;
+    var object = document.getElementById("colorcord");
+    object.style.backgroundColor = cord;
+}
+    </script>
+</body>
+</html>
